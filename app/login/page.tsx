@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const router = useRouter();
-  const [email, setEmail] = useState("john2@example.com");
-  const [password, setPassword] = useState("password123");
+  const [email, setEmail] = useState("1@1.com");
+  const [password, setPassword] = useState("1111");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: any) => {
@@ -29,7 +29,6 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <input
           type="email"
-          defaultValue={"john2@example.com"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
@@ -37,7 +36,6 @@ export default function Login() {
         <input
           type="password"
           value={password}
-          defaultValue={"password123"}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
