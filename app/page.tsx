@@ -1,14 +1,20 @@
 "use client";
 
 import Header from "@/components/header";
+
 import Todo from "@/components/todo";
-import api from "@/utils/api";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+type UserType = {
+  id: number;
+  name: string;
+  email: string;
+};
+
 export default function Home() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<UserType | undefined>();
   const router = useRouter();
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,10 +27,10 @@ export default function Home() {
         });
         setUserData(response.data);
         console.log(response.data);
-        if (!response.data.id) {
-          router.push("/login");
-        }
+        // if (!response.data.id) {
+        // }
       } catch (error) {
+        router.push("/login");
         console.error("Failed to fetch user data:", error);
 
         // 에러 처리 (401 에러는 인터셉터에서 처리됨)
@@ -34,10 +40,5 @@ export default function Home() {
     fetchUserData();
   }, []);
 
-  return (
-    <div>
-      <Header />
-      {/* <Todo /> */}
-    </div>
-  );
+  return <div>{userData && <Header username={userData?.name} />}</div>;
 }

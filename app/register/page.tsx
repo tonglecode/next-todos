@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import api from "@/utils/api";
 
 export default function Register() {
   const [name, setName] = useState("");

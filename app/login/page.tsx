@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const router = useRouter();
-  const [email, setEmail] = useState("1@1.com");
-  const [password, setPassword] = useState("1111");
+  const [email, setEmail] = useState("john2@example.com");
+  const [password, setPassword] = useState("password123");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: any) => {
@@ -24,7 +24,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="text-gray-800">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input

@@ -1,7 +1,8 @@
 "use client";
-import api from "@/utils/api";
+
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Button from "./button";
 
 export default function LogoutButton() {
   const router = useRouter();
@@ -9,13 +10,25 @@ export default function LogoutButton() {
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
     try {
-      await api.post("/logout");
+      await axios.post(
+        "http://localhost:8000/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       localStorage.removeItem("token");
-      router.push("/login");
+      window.location.reload();
     } catch (error) {
       console.error("Error logging out", error);
     }
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <div onClick={handleLogout}>
+      <Button name="Log out" />
+    </div>
+  );
 }

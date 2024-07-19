@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  userName: string;
+  userName: string | undefined;
 }
 
 const HeaderTitle: React.FC<Props> = ({ userName }) => {
