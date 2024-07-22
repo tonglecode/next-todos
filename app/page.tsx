@@ -1,6 +1,9 @@
 "use client";
 
+import Button from "@/components/button";
 import Header from "@/components/header";
+import HeaderTitle from "@/components/headerTitle";
+import Title from "@/components/title";
 
 import Todo from "@/components/todo";
 import axios from "axios";
@@ -11,6 +14,7 @@ type UserType = {
   id: number;
   name: string;
   email: string;
+  photoUrl: string;
 };
 
 export default function Home() {
@@ -40,5 +44,9 @@ export default function Home() {
     fetchUserData();
   }, []);
 
-  return <div>{userData && <Header username={userData?.name} />}</div>;
+  return (
+    <div className="border-b">
+      <Header username={userData?.name} photoUrl={userData?.photoUrl} />
+    </div>
+  );
 }

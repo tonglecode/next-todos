@@ -7,8 +7,12 @@ interface Props {
 const HeaderTitle: React.FC<Props> = ({ userName }) => {
   return (
     <div className="flex items-end">
-      <div className="font-extrabold mr-2 text-xl text-rose-700">Todos</div>
-      <div className="font-thin">{userName}</div>
+      <div className="font-thin mr-2">
+        <span className="uppercase">{userName ? userName : ""}</span>
+
+        {`'s`}
+      </div>
+      <div className="font-extrabold text-xl text-rose-700">Todos</div>
     </div>
   );
 };

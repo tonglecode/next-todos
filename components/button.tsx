@@ -1,13 +1,13 @@
 import React from "react";
 
 interface Props {
-  name?: string;
+  title?: string;
   color?: string;
   isBorder?: boolean;
 }
 
 const Button: React.FC<Props> = ({
-  name = "",
+  title = "",
   color = "skyblue",
   isBorder = false,
 }) => {
@@ -18,7 +18,7 @@ const Button: React.FC<Props> = ({
       } w-[80px] text-center py-2 rounded-lg cursor-pointer`}
       style={{ color: color }}
     >
-      {name}
+      {title}
     </div>
   );
 };
